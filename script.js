@@ -44,7 +44,7 @@ class PomodoroTimer {
   startTimer() {
     if (!this.isRunning) {
       this.isRunning = true;
-      this.elements.startPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      this.elements.startPauseBtn.innerHTML = '<span class="material-icons">pause</span>';
       this.timerId = setInterval(() => {
         this.timeLeft--;
         this.updateDisplay();
@@ -58,7 +58,7 @@ class PomodoroTimer {
   pauseTimer() {
     clearInterval(this.timerId);
     this.isRunning = false;
-    this.elements.startPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    this.elements.startPauseBtn.innerHTML = '<span class="material-icons">play_arrow</span>';
   }
 
   resetTimer() {
@@ -72,6 +72,8 @@ class PomodoroTimer {
     this.timeLeft = this.timerSteps[this.currentStepIndex].duration;
     this.updateDisplay();
     this.highlightActiveMode();
+    // 자동 연결(리다이렉트) 예시: 타이머가 끝날 때마다 특정 페이지로 이동
+    // window.location.href = "https://example.com";
   }
 
   switchMode(modeIndex) {
@@ -96,3 +98,6 @@ class PomodoroTimer {
 }
 
 new PomodoroTimer();
+
+// 자동 리다이렉트 예시: 페이지가 열리자마자 다른 주소로 이동하려면 아래 주석 해제
+// window.location.href = "https://example.com";
